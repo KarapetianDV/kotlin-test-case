@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "ru.karapetiandav.testcase"
         minSdkVersion 17
@@ -25,11 +25,19 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // Google libs
     compile 'com.android.support:appcompat-v7:26.0.1'
     compile 'com.android.support:recyclerview-v7:26.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jakewharton.threetenabp:threetenabp:1.0.5'
+
+    // Joda Time Android
+    compile 'net.danlew:android.joda:2.9.9'
+
+    // Tests
     testCompile 'junit:junit:4.12'
 }
 repositories {

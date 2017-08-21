@@ -1,13 +1,14 @@
 package ru.karapetiandav.testcase.model
 
-import java.util.*
+import org.joda.time.DateTime
 
-data class Notice(val nameIn: String, val date: Date, val gateIn: String) {
-    var name: String = nameIn
-    var flightDate: Date? = date
-    var gate: String? = gateIn
+data class Notice(
+        val name: String,
+        val date: DateTime,
+        val gate: String) {
 
     companion object {
+        val TYPE = "Notice"
         val NOTICE_EXTRA_NAME: String = "notice_name"
         val NOTICE_EXTRA_FLIGHTDATE: String = "flight_date"
         val NOTICE_EXTRA_GATE: String = "gate"

@@ -1,14 +1,16 @@
 package ru.karapetiandav.testcase.model
 
-import java.util.*
+import android.os.Parcel
+import android.os.Parcelable
 
-class Move(name: String, fromPlace: String, toPlace: String, estimateTime: TimeInterval) {
-    var name: String? = name
-    var fromPlace: String? = fromPlace
-    var toPlace: String? = toPlace
-    var estimateTime: TimeInterval? = null
+class Move(
+        val name: String,
+        val fromPlace: String,
+        val toPlace: String,
+        val estimateTime: TimeInterval) {
 
     companion object {
+        val TYPE = "Move"
         val MOVE_EXTRA_NAME = "name"
         val MOVE_FROM_PLACE = "from_place"
         val MOVE_TO_PLACE = "to_place"
@@ -16,12 +18,27 @@ class Move(name: String, fromPlace: String, toPlace: String, estimateTime: TimeI
     }
 }
 
-class TimeInterval() {
+class TimeInterval() : Parcelable {
+    constructor(parcel: Parcel) : this() {
+    }
 
-    fun getDateDiff(date: Date, date2: Date): String {
-        var long: Long = date2.time - date.time
-        var result: Date = Date(long)
+    fun getDateInterval(): String = "Должно быть сколько осталось до вылета"
 
-        return ("" + result.hours + ":" + result.minutes)
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<TimeInterval> {
+        override fun createFromParcel(parcel: Parcel): TimeInterval {
+            return TimeInterval(parcel)
+        }
+
+        override fun newArray(size: Int): Array<TimeInterval?> {
+            return arrayOfNulls(size)
+        }
     }
 }
